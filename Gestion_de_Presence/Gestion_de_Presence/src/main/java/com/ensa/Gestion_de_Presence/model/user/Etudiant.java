@@ -1,21 +1,33 @@
 package com.ensa.Gestion_de_Presence.model.user;
 
-import com.ensa.Gestion_de_Presence.model.Absence;
 import com.ensa.Gestion_de_Presence.model.Classe;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
-
-import java.util.List;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class Etudiant extends Utilisateur {
+@Document(collection = "etudiants")
+public class Etudiant {
+    @Id
+    private String id;
+    private String nom;
+    private String prenom;
+    private String email;
     private String numeroEtudiant;
 
     @DBRef
-    private Classe classe;
+    @Setter
+    private Classe classe; // Référence à la classe
+    public Classe getClasse() {
+        return classe;
+    }
 
-    @DBRef
-    private List<Absence> absences;
+    public void setClasse(Classe classe) {
+        this.classe = classe;
+    }
+
+    // Lombok @Data génère automatiquement getters/setters
 }
