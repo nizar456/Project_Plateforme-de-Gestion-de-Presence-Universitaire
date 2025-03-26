@@ -17,25 +17,10 @@ import java.util.List;
 @RequestMapping("/api/admin")
 @RequiredArgsConstructor
 public class AdminController {
-    @Autowired
     private final EtudiantService etudiantService;
-    @Autowired
     private final ProfesseurService professeurService;
-    @Autowired
     private final ClasseService classeService;
-    @Autowired
     private final ModuleClasseService moduleClasseService;
-    public AdminController(
-            EtudiantService etudiantService,
-            ProfesseurService professeurService,
-            ClasseService classeService,
-            ModuleClasseService moduleClasseService
-    ) {
-        this.etudiantService = etudiantService;
-        this.professeurService = professeurService;
-        this.classeService = classeService;
-        this.moduleClasseService =moduleClasseService;
-    }
 
     // === Gestion des Étudiants ===
     @PostMapping("/etudiants")

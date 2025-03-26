@@ -13,9 +13,6 @@ import java.util.List;
 public class ModuleClasseService {
     private final ModuleClasseRepository moduleClasseRepository;
 
-    public ModuleClasseService(ModuleClasseRepository moduleClasseRepository) {
-        this.moduleClasseRepository = moduleClasseRepository;
-    }
 
     // Affecter un module à une classe + professeur
     public ModuleClasse affecterModuleClasse(ModuleClasse moduleClasse) {

@@ -16,12 +16,6 @@ public class UserService {
     private final EtudiantRepository etudiantRepository;
     private final ProfesseurRepository professeurRepository;
 
-    @Autowired
-    public UserService(EtudiantRepository etudiantRepository, ProfesseurRepository professeurRepository) {
-        this.etudiantRepository = etudiantRepository;
-        this.professeurRepository = professeurRepository;
-    }
-
     public List<Etudiant> getAllEtudiants() {
         return etudiantRepository.findAll();
     }

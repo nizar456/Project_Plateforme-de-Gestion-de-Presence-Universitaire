@@ -11,11 +11,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProfesseurService {
-    private final ProfesseurRepository professeurRepository;
 
-    public ProfesseurService(ProfesseurRepository professeurRepository) {
-        this.professeurRepository = professeurRepository;
-    }
+    private final ProfesseurRepository professeurRepository;
 
     // Créer un professeur
     public Professeur createProfesseur(Professeur professeur) {

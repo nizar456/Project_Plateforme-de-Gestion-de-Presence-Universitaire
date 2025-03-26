@@ -13,10 +13,6 @@ import java.util.List;
 public class ClasseService {
     private final ClasseRepository classeRepository;
 
-    public ClasseService(ClasseRepository classeRepository) {
-        this.classeRepository = classeRepository;
-    }
-
     // Créer une classe
     public Classe createClasse(Classe classe) {
         return classeRepository.save(classe);

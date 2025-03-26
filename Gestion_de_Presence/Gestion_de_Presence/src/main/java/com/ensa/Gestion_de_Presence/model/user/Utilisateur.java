@@ -7,8 +7,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Getter
-@Setter
 @Document(collection = "users")
 public abstract class Utilisateur {
     @Id

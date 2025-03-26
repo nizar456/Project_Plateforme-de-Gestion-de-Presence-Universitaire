@@ -17,11 +17,6 @@ public class EtudiantService {
     private final EtudiantRepository etudiantRepository;
     private final ClasseRepository classeRepository;
 
-    @Autowired
-    public EtudiantService(EtudiantRepository etudiantRepository, ClasseRepository classeRepository) {
-        this.etudiantRepository = etudiantRepository;
-        this.classeRepository = classeRepository;
-    }
 
     // Créer un étudiant + l'affecter à une classe
     public  EtudiantDTO createEtudiant(Etudiant etudiant, String classeId) {
