@@ -1,5 +1,6 @@
 package com.ensa.Gestion_de_Presence.service;
 
+import com.ensa.Gestion_de_Presence.dto.EtudiantDTO;
 import com.ensa.Gestion_de_Presence.model.Classe;
 import com.ensa.Gestion_de_Presence.model.user.Etudiant;
 import com.ensa.Gestion_de_Presence.repository.ClasseRepository;
@@ -23,20 +24,32 @@ public class EtudiantService {
     }
 
     // Créer un étudiant + l'affecter à une classe
-    public Etudiant createEtudiant(Etudiant etudiant, String classeId) {
+    public  EtudiantDTO createEtudiant(Etudiant etudiant, String classeId) {
         Classe classe = classeRepository.findById(classeId)
                 .orElseThrow(() -> new RuntimeException("Classe non trouvée"));
 
-        // 1. Sauvegarder d'abord l'étudiant
-        Etudiant savedEtudiant = etudiantRepository.save(etudiant);
+        etudiant.setClasse(classe);
+        Etudiant saved = etudiantRepository.save(etudiant);
 
-        // 2. Mettre à jour la référence dans la classe
-        classe.addEtudiant(savedEtudiant);
+        classe.getEtudiants().add(saved);
         classeRepository.save(classe);
 
-        // 3. Mettre à jour la référence dans l'étudiant
-        savedEtudiant.setClasse(classe);
-        return etudiantRepository.save(savedEtudiant);
+        return convertToDto(saved);
+    }
+    private EtudiantDTO convertToDto(Etudiant etudiant) {
+        EtudiantDTO dto = new EtudiantDTO();
+        // Copiez les propriétés
+        dto.setId(etudiant.getId());
+        // ... autres propriétés
+
+        if(etudiant.getClasse() != null) {
+            EtudiantDTO.ClasseInfo classeInfo = new EtudiantDTO.ClasseInfo();
+            classeInfo.setId(etudiant.getClasse().getId());
+            classeInfo.setNom(etudiant.getClasse().getNom());
+            dto.setClasse(classeInfo);
+        }
+
+        return dto;
     }
 
 

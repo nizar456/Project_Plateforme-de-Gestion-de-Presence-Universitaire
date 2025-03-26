@@ -1,5 +1,6 @@
 package com.ensa.Gestion_de_Presence.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -19,7 +20,7 @@ public class FeuilleAbsence {
 
     @DBRef
     private ModuleClasse moduleClasse;
-
+    @JsonIgnore
     @DBRef
     private List<Absence> absences;
 }

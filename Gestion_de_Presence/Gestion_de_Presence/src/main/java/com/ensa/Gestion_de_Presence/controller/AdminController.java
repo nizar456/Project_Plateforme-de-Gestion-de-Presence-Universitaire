@@ -1,5 +1,6 @@
 package com.ensa.Gestion_de_Presence.controller;
 
+import com.ensa.Gestion_de_Presence.dto.EtudiantDTO;
 import com.ensa.Gestion_de_Presence.model.Classe;
 import com.ensa.Gestion_de_Presence.model.ModuleClasse;
 import com.ensa.Gestion_de_Presence.model.user.Etudiant;
@@ -38,7 +39,7 @@ public class AdminController {
 
     // === Gestion des Étudiants ===
     @PostMapping("/etudiants")
-    public ResponseEntity<Etudiant> createEtudiant(
+    public ResponseEntity<EtudiantDTO> createEtudiant(
             @RequestBody Etudiant etudiant,
             @RequestParam String classeId
     ) {
